@@ -30,19 +30,35 @@ body {
     border-radius: 12px;
     padding: 12px 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* Logout button style */
+.navbar .logout-btn {
+    background: rgba(255, 255, 255, 0.25);
+    color: #800e71;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.navbar .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* Centered brand */
 .navbar-brand {
     color: #800e71;
     font-weight: bold;
-    font-size: 1.8rem; /* Increased from 1.5rem */
+    font-size: 1.8rem;
+    margin: 0 auto;
 }
-
 
 /* Container */
 .container {
@@ -60,7 +76,7 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
     font-weight: 500;
-    height: 250px; /* Equal height for all cards */
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,9 +106,10 @@ body {
     display: block;
     margin-bottom: 10px;
 }
+
 /* Footer Styles */
 .site-footer {
-    background-color: #404040; /* dark grey */
+    background-color: #404040;
     color: #fff;
     padding: 40px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -150,8 +167,6 @@ body {
     color: #E5E7EB;
 }
 
-
-
 /* Responsive */
 @media(max-width:768px){
     .container {
@@ -161,17 +176,23 @@ body {
         height: auto;
         padding: 25px 15px;
     }
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navbar-brand {
+        margin: 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-
-
-<!-- 🧊 Glass Navbar -->
+<!-- 🧊 Glass Navbar with Logout on right -->
 <nav class="navbar">
     <div class="navbar-brand">Green Valley Dairy</div>
+    <a href="logout.html" class="logout-btn">Logout</a>
 </nav>
 
 <!-- 📊 DASHBOARD CARDS -->
@@ -220,7 +241,6 @@ body {
                 </div>
             </a>
         </div>
-
         
     </div>
 
@@ -260,13 +280,12 @@ body {
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="farmers.html">Farmers</a></li>
-
         <li><a href="delivery.html">Home Delivery</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
 
-     <!-- Contact Info -->
+    <!-- Contact Info -->
     <div class="footer-section contact-info">
       <h4>Contact Information</h4>
       <p>📍 14 Green Valley, Near Toll Naka, Neri, Jamner,Jalgaon, MH, India</p>
@@ -280,7 +299,6 @@ body {
   <!-- Bottom line -->
   <div class="footer-bottom">
     <p>© 2026 Green Valley Dairy. All Rights Reserved.</p>
-    
   </div>
 </footer>
 
