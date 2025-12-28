@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dairy Products</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* Body Background with Gradient Overlay */
+body {
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), #d1d5db;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #111827;
+    min-height: 100vh;
+}
+
+/* Glass Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: #800e71;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Container */
+.container {
+    margin-top: 40px;
+}
+
+/* Page Heading */
+h3 {
+    color: #111827;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.product-card h5 {
+    margin-top: 10px;
+    color: #111827;
+}
+.product-card p {
+    color: #6B7280;
+    margin-bottom: 0;
+}
+
+/* Back Button */
+.back-btn {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: rgba(31, 41, 55, 0.85);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.3s;
+    z-index: 1000;
+}
+.back-btn:hover {
+    background: rgba(37, 99, 235, 0.85);
+    transform: translateY(-50%) scale(1.1);
+}
+/* Footer Styles */
+.site-footer {
+    background-color: #404040; /* dark grey */
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 220px;
+}
+
+.site-footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #F3F4F6;
+}
+
+.site-footer p,
+.site-footer li,
+.site-footer a {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.site-footer a {
+    color: #D1D5DB;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #374151;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #E5E7EB;
+}
+</style>
+</head>
+<body>
+
+<!-- Back Button -->
+<a href="dashboard.html" class="back-btn">
+    ⬅ Back
+</a>
+
+<!-- Glass Navbar -->
+<nav class="navbar">
+    <div class="navbar-brand">Green Valley Dairy</div>
+</nav>
+
+<!-- Products Container -->
+<div class="container mt-4">
+    <h3>🥛 Green Valley Dairy Products List</h3>
+    <div class="row g-4">
+
+        <!-- Milk -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/istockphoto-2158429945-2048x2048.jpg" alt="Milk">
+                <h5>Milk</h5>
+                <p>₹50 / Liter</p>
+            </div>
+        </div>
+
+        <!-- Curd -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Curd.jpg" alt="Curd">
+                <h5>Curd / Yogurt</h5>
+                <p>₹60 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Butter -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Butter.jpg" alt="Butter">
+                <h5>Butter</h5>
+                <p>₹220 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Ghee -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Ghee.jpg" alt="Ghee">
+                <h5>Ghee</h5>
+                <p>₹600 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Cheese -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Cheese.jpg" alt="Cheese">
+                <h5>Cheese</h5>
+                <p>₹350 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Paneer -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/paneer.webp" alt="Paneer">
+                <h5>Paneer</h5>
+                <p>₹300 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Cream -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Cream.jpg" alt="Cream">
+                <h5>Cream</h5>
+                <p>₹180 / Liter</p>
+            </div>
+        </div>
+
+        <!-- Buttermilk -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Butter Milk.jpg" alt="Buttermilk">
+                <h5>Buttermilk</h5>
+                <p>₹30 / Glass</p>
+            </div>
+        </div>
+
+        <!-- Ice Cream -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Ice Cream.jpg" alt="Ice Cream">
+                <h5>Ice Cream</h5>
+                <p>₹120 / Cup</p>
+            </div>
+        </div>
+
+        <!-- Milk Powder -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Milk powder.jpg" alt="Milk Powder">
+                <h5>Milk Powder</h5>
+                <p>₹450 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Condensed Milk -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Condensed Milk.jpg" alt="Condensed Milk">
+                <h5>Condensed Milk</h5>
+                <p>₹200 / Tin</p>
+            </div>
+        </div>
+
+        <!-- Flavored Milk -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Flavored Milk.jpg" alt="Flavored Milk">
+                <h5>Flavored Milk</h5>
+                <p>₹40 / Bottle</p>
+            </div>
+        </div>
+
+        <!-- Koya / Mawa -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Koya.jpg" alt="Koya">
+                <h5>Koya / Mawa</h5>
+                <p>₹280 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Shrikhand -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Shrikhand.jpg" alt="Shrikhand">
+                <h5>Shrikhand</h5>
+                <p>₹160 / Cup</p>
+            </div>
+        </div>
+
+        <!-- Basundi -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Basundi.jpg" alt="Basundi">
+                <h5>Basundi</h5>
+                <p>₹140 / Cup</p>
+            </div>
+        </div>
+
+        <!-- Lassi -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Lassi.jpg" alt="Lassi">
+                <h5>Lassi</h5>
+                <p>₹50 / Glass</p>
+            </div>
+        </div>
+
+        <!-- Rabri -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Rabri.jpg" alt="Rabri">
+                <h5>Rabri</h5>
+                <p>₹180 / Cup</p>
+            </div>
+        </div>
+
+        <!-- Pedha -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Pedha.jpg" alt="Pedha">
+                <h5>Pedha</h5>
+                <p>₹400 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Barfi -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Barfi.jpg" alt="Barfi">
+                <h5>Barfi</h5>
+                <p>₹420 / Kg</p>
+            </div>
+        </div>
+
+        <!-- Rasulla -->
+        <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+                <img src="/images/Rasulla.jpg" alt="Rasulla">
+                <h5>Rasulla</h5>
+                <p>₹380 / Kg</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🦵 FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- About & Description -->
+    <div class="footer-section about">
+      <h4>About Green Valley Dairy</h4>
+      <p>
+        Green Valley Dairy provides high‑quality fresh dairy products sourced
+        directly from local farms. We’re committed to nutrition, sustainability,
+        and community support.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="delivery.html">Home Delivery</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+     <!-- Contact Info -->
+    <div class="footer-section contact-info">
+      <h4>Contact Information</h4>
+      <p>📍 14 Green Valley, Near Toll Naka, Neri, Jamner,Jalgaon, MH, India</p>
+      <p>📞 +91‑9876543210</p>
+      <p>✉️ info@greenvalleydairy.com</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Valley Dairy. All Rights Reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

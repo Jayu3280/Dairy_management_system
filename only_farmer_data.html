@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmer Login</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), #d1d5db;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.login-box {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.table-box {
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.btn-login {
+    background-color: #2563EB;
+    color: #fff;
+    width: 100%;
+}
+.btn-login:hover {
+    background-color: #1D4ED8;
+}
+#errorMsg {
+    color: red;
+    margin-top: 10px;
+}
+/* Back Button */
+.back-btn {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: rgba(31, 41, 55, 0.85);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.3s;
+    z-index: 1000;
+}
+.back-btn:hover {
+    background: rgba(37, 99, 235, 0.85);
+    transform: translateY(-50%) scale(1.1);
+}
+/* Footer Styles */
+.site-footer {
+    background-color: #404040; /* dark grey */
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 220px;
+}
+
+.site-footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #F3F4F6;
+}
+
+.site-footer p,
+.site-footer li,
+.site-footer a {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.site-footer a {
+    color: #D1D5DB;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #374151;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #E5E7EB;
+}
+</style>
+</head>
+<body>
+
+<!-- 🔙 Back Button -->
+<a href="farmers.html" class="back-btn">
+    ⬅ Back
+</a>
+</style>
+</head>
+<body>
+
+<div class="login-box">
+    <h3 class="text-center mb-4">Farmer Login</h3>
+    <input type="text" id="farmerId" class="form-control mb-3" placeholder="Enter Farmer ID">
+    <input type="password" id="password" class="form-control mb-3" placeholder="Enter Password">
+    <button class="btn btn-login" onclick="loginFarmer()">Login</button>
+    <p id="errorMsg"></p>
+</div>
+
+<div class="container table-box" id="farmerDetails" style="display:none;">
+    <h4 class="mb-3">Farmer Details</h4>
+    <table class="table table-bordered">
+        <tr><th>Farmer Name</th><td id="fName"></td></tr>
+        <tr><th>Farmer ID</th><td id="fId"></td></tr>
+        <tr><th>Monthly Collection (Liters)</th><td id="monthlyCollection"></td></tr>
+        <tr><th>Liters/Day</th><td id="literPerDay"></td></tr>
+        <tr><th>Fat (%)</th><td id="fatContent"></td></tr>
+        <tr><th>Rate per Liter</th><td id="ratePerLiter"></td></tr>
+        <tr><th>Total Amount</th><td id="totalAmount"></td></tr>
+    </table>
+</div>
+
+<!-- 🦵 FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- About & Description -->
+    <div class="footer-section about">
+      <h4>About Green Valley Dairy</h4>
+      <p>
+        Green Valley Dairy provides high‑quality fresh dairy products sourced
+        directly from local farms. We’re committed to nutrition, sustainability,
+        and community support.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="delivery.html">Home Delivery</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+     <!-- Contact Info -->
+    <div class="footer-section contact-info">
+      <h4>Contact Information</h4>
+      <p>📍 14 Green Valley, Near Toll Naka, Neri, Jamner,Jalgaon, MH, India</p>
+      <p>📞 +91‑9876543210</p>
+      <p>✉️ info@greenvalleydairy.com</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Valley Dairy. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Dummy Farmer Data
+const farmers = {
+    "F001": {password:"Div@001", name:"Divyesh Patil", monthlyCollection:900, literPerDay:30, fat:4.5, ratePerLiter:50},
+    "F002": {password:"Jay@002", name:"Jayant Patil", monthlyCollection:1200, literPerDay:40, fat:4.2, ratePerLiter:48},
+    "F003": {password:"Har003", name:"Harshal Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F004": {password:"Nit@004",name:"Nitin  Karnkal", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F005": {password:"Ram@005",name:"Ram Gavale", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F006": {password:"Nil@006",name:"Nilesh Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F007": {password:"Gaj@007",name:"Gajanan Narwade", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F008": {password:"Raj@008",name:"Rajendra Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F009": {password:"Tej@009",name:"Tejas Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F010": {password:"Rus@010",name:"Rushikesh Deshmukh", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F011": {password:"Roh@011",name:"Rohit Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F012": {password:"Sag@012",name:"Sagar Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F013": {password:"Gan@013",name:"Ganesh Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F014": {password:"Kru@014",name:"Krushna Gavale", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    "F015": {password:"Vij@015",name:"Vijay Patil", monthlyCollection:600, literPerDay:20, fat:4.8, ratePerLiter:52},
+    
+};
+
+function loginFarmer(){
+    const id = document.getElementById('farmerId').value.trim();
+    const pass = document.getElementById('password').value.trim();
+    const errorMsg = document.getElementById('errorMsg');
+    errorMsg.innerText = '';
+
+    if(!id || !pass){
+        errorMsg.innerText = "⚠ Please enter Farmer ID and Password!";
+        return;
+    }
+
+    // Check if farmer exists
+    if(farmers[id]){
+        const f = farmers[id];
+
+        // Build expected password = lowercase name (no spaces) + 123
+        const expectedPass = f.name.replace(/\s+/g, '').toLowerCase() + "123";
+
+        if(pass.toLowerCase() === expectedPass){
+            document.getElementById('fName').innerText = f.name;
+            document.getElementById('fId').innerText = id;
+            document.getElementById('monthlyCollection').innerText = f.monthlyCollection + " L";
+            document.getElementById('literPerDay').innerText = f.literPerDay + " L";
+            document.getElementById('fatContent').innerText = f.fat + " %";
+            document.getElementById('ratePerLiter').innerText = "₹" + f.ratePerLiter;
+            document.getElementById('totalAmount').innerText = "₹" + (f.monthlyCollection * f.ratePerLiter);
+            document.getElementById('farmerDetails').style.display = "block";
+            errorMsg.innerText = '';
+        } else {
+            errorMsg.innerText = "❌ Invalid Farmer ID or Password!";
+            document.getElementById('farmerDetails').style.display = "none";
+        }
+    } else {
+        errorMsg.innerText = "❌ Invalid Farmer ID!";
+        document.getElementById('farmerDetails').style.display = "none";
+    }
+}
+
+</script>
+
+</body>
+</html>

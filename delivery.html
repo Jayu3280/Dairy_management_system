@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Delivery</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        background-color: #e6f0ff70;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #111827;
+    }
+
+    /* 🧊 Glass Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: #800e71;
+    font-weight: bold;
+    font-size: 1.8rem; /* Increased from 1.5rem */
+}
+
+
+    .section-box {
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        margin-bottom: 25px;
+    }
+
+    .btn-primary { background-color: #2563EB; border: none; }
+    .btn-primary:hover { background-color: #1D4ED8; }
+    .btn-warning { background-color: #F59E0B; border: none; }
+    .btn-warning:hover { background-color: #D97706; }
+    .btn-success { background-color: #22C55E; border: none; }
+    .btn-success:hover { background-color: #16A34A; }
+
+    .status-delivered { color: green; font-weight: bold; }
+    .status-pending { color: orange; font-weight: bold; }
+
+    .sub-text { color: #6B7280; font-size: 0.9rem; }
+
+    input.form-control, select.form-control { border-radius: 10px; border: 1px solid #D1D5DB; }
+
+    /* Back Button */
+.back-btn {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: rgba(31, 41, 55, 0.85);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.3s;
+    z-index: 1000;
+}
+.back-btn:hover {
+    background: rgba(37, 99, 235, 0.85);
+    transform: translateY(-50%) scale(1.1);
+}
+/* Footer Styles */
+.site-footer {
+    background-color: #404040; /* dark grey */
+    color: #fff;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 220px;
+}
+
+.site-footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #F3F4F6;
+}
+
+.site-footer p,
+.site-footer li,
+.site-footer a {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.site-footer a {
+    color: #D1D5DB;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #374151;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #E5E7EB;
+}
+</style>
+</head>
+<body>
+
+<!-- 🔙 Back Button -->
+<a href="dashboard.html" class="back-btn">
+    ⬅ Back
+</a>
+</style>
+</head>
+<body>
+    <!-- 🧊 Glass Navbar -->
+<nav class="navbar">
+    <div class="navbar-brand">Green Valley Dairy</div>
+</nav>
+
+
+
+<div class="container mt-4">
+<h3 class="mb-4">🚚 Home Delivery Management</h3>
+
+<!-- Customer Registration -->
+<div class="section-box">
+<h5>👤 Customer Registration</h5>
+<div class="row g-2">
+    <div class="col-md-4"><input type="text" id="custName" class="form-control" placeholder="Customer Name"></div>
+    <div class="col-md-4"><input type="text" id="custMobile" class="form-control" placeholder="Mobile Number"></div>
+    <div class="col-md-4"><input type="text" id="custAddress" class="form-control" placeholder="Address"></div>
+</div>
+</div>
+
+<!-- Subscription -->
+<div class="section-box">
+<h5>📅 Subscription Type</h5>
+<select class="form-control w-50" id="subscription">
+    <option value="daily">Daily</option>
+    <option value="monthly">Monthly</option>
+</select>
+</div>
+
+<!-- Delivery Schedule -->
+<div class="section-box">
+<h5>⏰ Delivery Schedule</h5>
+<div class="row g-2">
+    <div class="col-md-6">
+        <label>Start Date</label>
+        <input type="date" id="startDate" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label>Delivery Time</label>
+        <select id="deliveryTime" class="form-control">
+            <option>Morning (6 AM - 9 AM)</option>
+            <option>Evening (5 PM - 8 PM)</option>
+        </select>
+    </div>
+</div>
+</div>
+
+<!-- Product Selection -->
+<div class="section-box">
+<h5>🥛 Product Management</h5>
+<select id="productSelect" class="form-control w-50">
+    <option value="Milk">Milk</option>
+    <option value="Curd / Yogurt">Curd / Yogurt</option>
+    <option value="Butter">Butter</option>
+    <option value="Ghee">Ghee</option>
+    <option value="Cheese">Cheese</option>
+    <option value="Paneer">Paneer</option>
+    <option value="Cream">Cream</option>
+    <option value="Buttermilk">Buttermilk</option>
+    <option value="Ice Cream">Ice Cream</option>
+</select>
+</div>
+
+<!-- Quantity Management -->
+<div class="section-box">
+<h5>🥛 Quantity Management</h5>
+<input type="text" id="productQty" class="form-control w-25" placeholder="Enter Quantity">
+</div>
+
+<!-- Payment Options -->
+<div class="section-box">
+<h5>💳 Payment Options</h5>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="payment" value="Cash" id="payCash" onclick="toggleUPI(false)"> 
+  <label class="form-check-label" for="payCash">Cash</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="payment" value="UPI" id="payUPI" onclick="toggleUPI(true)"> 
+  <label class="form-check-label" for="payUPI">UPI</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="payment" value="Monthly Bill" id="payBill" onclick="toggleUPI(false)"> 
+  <label class="form-check-label" for="payBill">Monthly Bill</label>
+</div>
+
+<!-- UPI Payment Step -->
+<div id="upiStep" style="display:none; margin-top:10px;">
+    <h6>Select UPI Payment Method:</h6>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="upiMethod" id="upiIdOption" onclick="showUPIId()" checked>
+        <label class="form-check-label" for="upiIdOption">Enter UPI ID</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="upiMethod" id="upiQROption" onclick="showUPIQR()">
+        <label class="form-check-label" for="upiQROption">Scan QR Code</label>
+    </div>
+
+    <!-- Enter UPI ID -->
+    <div id="upiIdDiv" style="margin-top:10px;">
+        <input type="text" id="upiId" class="form-control w-50 mb-2" placeholder="Enter UPI ID">
+        <button class="btn btn-success" onclick="confirmUPIPayment()">Pay</button>
+    </div>
+
+    <!-- QR Code -->
+    <div id="upiQRDiv" style="margin-top:10px; display:none;">
+        <img src="/images/Scanner.png" alt="QR Code" style="width:200px;height:200px;">
+        <button class="btn btn-success mt-2" onclick="confirmUPIPaymentQR()">Pay</button>
+    </div>
+
+    <p id="upiMsg" class="mt-2"></p>
+</div>
+</div>
+
+<!-- Pause / Resume Delivery -->
+<div class="section-box">
+<h5>⏸ Pause / ▶ Resume Delivery</h5>
+<div class="btn-group">
+    <button class="btn btn-warning" onclick="pauseDelivery()">Pause Delivery</button>
+    <button class="btn btn-success" onclick="resumeDelivery()">Resume Delivery</button>
+</div>
+<p id="deliveryStatusMsg" class="mt-2"></p>
+</div>
+
+<!-- Submit Button -->
+<div class="mb-4">
+<button class="btn btn-primary w-25" onclick="submitDelivery()">Submit Delivery</button>
+<p id="submitMsg" class="mt-2"></p>
+</div>
+
+<!-- Delivery Status Table -->
+<div class="section-box">
+<h5>📦 Delivery Status</h5>
+<table class="table table-bordered">
+<thead class="table-success">
+<tr>
+<th>Date</th><th>Customer</th><th>Product</th><th>Quantity</th><th>Subscription</th><th>Payment</th><th>Status</th>
+</tr>
+</thead>
+<tbody id="deliveryTable">
+<tr>
+<td>18-03-2025</td>
+<td>Ramesh</td>
+<td>Milk</td>
+<td>1 Liter</td>
+<td>Daily</td>
+<td>Cash</td>
+<td class="status-delivered">Delivered</td>
+</tr>
+<tr>
+<td>19-03-2025</td>
+<td>Suresh</td>
+<td>Milk</td>
+<td>1 Liter</td>
+<td>Daily</td>
+<td>UPI (suresh@upi)</td>
+<td class="status-pending">Pending</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- SMS / Notification -->
+<div class="section-box">
+<h5>📩 SMS / Notification</h5>
+<p class="sub-text">✔ Customer receives SMS/Notification after successful delivery.</p>
+</div>
+
+</div>
+
+<!-- 🦵 FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- About & Description -->
+    <div class="footer-section about">
+      <h4>About Green Valley Dairy</h4>
+      <p>
+        Green Valley Dairy provides high‑quality fresh dairy products sourced
+        directly from local farms. We’re committed to nutrition, sustainability,
+        and community support.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="delivery.html">Home Delivery</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+     <!-- Contact Info -->
+    <div class="footer-section contact-info">
+      <h4>Contact Information</h4>
+      <p>📍 14 Green Valley, Near Toll Naka, Neri, Jamner,Jalgaon, MH, India</p>
+      <p>📞 +91‑9876543210</p>
+      <p>✉️ info@greenvalleydairy.com</p>
+      <p>@Jayant Patil</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Valley Dairy. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+// UPI Payment Methods
+let upiPaid = false;
+
+function toggleUPI(show){
+    const step = document.getElementById('upiStep');
+    step.style.display = show ? 'block' : 'none';
+    document.getElementById('upiMsg').innerText = '';
+    document.getElementById('upiId').value = '';
+    upiPaid = false;
+    document.getElementById('upiIdDiv').style.display = 'block';
+    document.getElementById('upiQRDiv').style.display = 'none';
+    document.getElementById('upiIdOption').checked = true;
+}
+
+function showUPIId(){
+    document.getElementById('upiIdDiv').style.display = 'block';
+    document.getElementById('upiQRDiv').style.display = 'none';
+}
+
+function showUPIQR(){
+    document.getElementById('upiIdDiv').style.display = 'none';
+    document.getElementById('upiQRDiv').style.display = 'block';
+}
+
+function confirmUPIPayment(){
+    const upiId = document.getElementById('upiId').value.trim();
+    if(!upiId){
+        document.getElementById('upiMsg').innerText = "⚠ Please enter your UPI ID!";
+        document.getElementById('upiMsg').style.color = "red";
+        upiPaid = false;
+        return;
+    }
+    document.getElementById('upiMsg').innerText = `✅ Payment done via UPI ID (${upiId})`;
+    document.getElementById('upiMsg').style.color = "green";
+    upiPaid = true;
+}
+
+function confirmUPIPaymentQR(){
+    document.getElementById('upiMsg').innerText = "✅ Payment done via QR Code!";
+    document.getElementById('upiMsg').style.color = "green";
+    upiPaid = true;
+}
+
+// Pause / Resume
+function pauseDelivery(){
+    const msg = document.getElementById('deliveryStatusMsg');
+    msg.innerText = "⏸ Delivery has been paused.";
+    msg.style.color = "orange";
+}
+
+function resumeDelivery(){
+    const msg = document.getElementById('deliveryStatusMsg');
+    msg.innerText = "▶ Delivery resumed successfully.";
+    msg.style.color = "green";
+}
+
+// Submit Delivery
+function submitDelivery(){
+    const name = document.getElementById('custName').value.trim();
+    const mobile = document.getElementById('custMobile').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+    const qty = document.getElementById('productQty').value.trim();
+    const subscription = document.getElementById('subscription').value;
+    const date = document.getElementById('startDate').value;
+    const product = document.getElementById('productSelect').value;
+
+    const paymentEls = document.getElementsByName('payment');
+    let payment = "";
+    for(let el of paymentEls){ if(el.checked) { payment = el.value; break; } }
+
+    if(payment === "UPI"){
+        if(!upiPaid){
+            document.getElementById('submitMsg').innerText = "⚠ Please complete UPI payment first!";
+            document.getElementById('submitMsg').style.color = "red";
+            return;
+        }
+        if(document.getElementById('upiIdOption').checked){
+            const upiId = document.getElementById('upiId').value.trim();
+            payment += ` (${upiId})`;
+        } else {
+            payment += " (QR Code)";
+        }
+        upiPaid = false;
+    }
+
+    if(!name || !mobile || !address || !date || !payment || !qty){
+        document.getElementById('submitMsg').innerText = "⚠ Please fill all required fields!";
+        document.getElementById('submitMsg').style.color = "red";
+        return;
+    }
+
+    const table = document.getElementById('deliveryTable');
+    const row = table.insertRow();
+    row.innerHTML = `<td>${date}</td>
+                     <td>${name}</td>
+                     <td>${product}</td>
+                     <td>${qty} Liter</td>
+                     <td>${subscription.charAt(0).toUpperCase() + subscription.slice(1)}</td>
+                     <td>${payment}</td>
+                     <td class="status-pending">Pending</td>`;
+
+    document.getElementById('submitMsg').innerText = "✅ Delivery submitted successfully!";
+    document.getElementById('submitMsg').style.color = "green";
+
+    // Clear form
+    document.getElementById('custName').value = "";
+    document.getElementById('custMobile').value = "";
+    document.getElementById('custAddress').value = "";
+    document.getElementById('startDate').value = "";
+    document.getElementById('productQty').value = "";
+    document.getElementById('subscription').selectedIndex = 0;
+    document.getElementById('productSelect').selectedIndex = 0;
+    for(let el of paymentEls) el.checked = false;
+    toggleUPI(false);
+}
+</script>
+
+</body>
+</html>
