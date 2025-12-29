@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dairy Login</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +74,7 @@
     </div>
 </div>
 
-<!-- ✅ Sign Up Modal -->
+<!-- Sign Up Modal -->
 <div class="modal fade" id="signupModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -89,7 +90,7 @@
   </div>
 </div>
 
-<!-- ✅ Success Popup -->
+<!-- Success Popup -->
 <div class="modal fade" id="successModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">
@@ -108,51 +109,66 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    let storedUsername = "";
-    let storedPassword = "";
+let storedUsername = "";
+let storedPassword = "";
 
-    // ✅ Username must be name followed by number
-    const usernamePattern = /^[a-zA-Z]+[0-9]+$/;
-    const passwordPattern = /^[0-9]{5,}$/;
+// Validation patterns
+const usernamePattern = /^[a-zA-Z]+[0-9]+$/;
+const passwordPattern = /^[0-9]{5,}$/;
 
-    // SIGN UP
-    document.getElementById('signupBtn').addEventListener('click', function () {
-        const u = document.getElementById('signupUsername').value;
-        const p = document.getElementById('signupPassword').value;
+// SIGN UP
+document.getElementById('signupBtn').addEventListener('click', function () {
+    const u = document.getElementById('signupUsername').value.trim();
+    const p = document.getElementById('signupPassword').value.trim();
 
-        if (!usernamePattern.test(u)) {
-            alert("Username must be in format: name followed by numbers (e.g., john123)");
-            return;
-        }
+    if (u === "" || p === "") {
+        alert("Please fill all sign-up fields");
+        return;
+    }
 
-        if (!passwordPattern.test(p)) {
-            alert("Password must be at least 5 digits (numbers only)");
-            return;
-        }
+    if (!usernamePattern.test(u)) {
+        alert("Username must be in format: name followed by numbers (e.g., john123)");
+        return;
+    }
 
-        storedUsername = u;
-        storedPassword = p;
+    if (!passwordPattern.test(p)) {
+        alert("Password must be at least 5 digits (numbers only)");
+        return;
+    }
 
-        alert("Sign Up Successful! Now login.");
-        bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
-    });
+    storedUsername = u;
+    storedPassword = p;
 
-    // LOGIN
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        const u = document.getElementById('username').value;
-        const p = document.getElementById('password').value;
+    alert("Sign Up Successful! Now login.");
+    bootstrap.Modal.getInstance(document.getElementById('signupModal')).hide();
+});
 
-        if (u === storedUsername && p === storedPassword) {
-            const modal = new bootstrap.Modal(document.getElementById('successModal'));
-            modal.show();
+// LOGIN
+document.getElementById('loginBtn').addEventListener('click', function () {
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
 
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 2000);
-        } else {
-            alert("Invalid username or password");
-        }
-    });
+    if (u === "" || p === "") {
+        alert("Please enter username and password");
+        return;
+    }
+
+    if (storedUsername === "" || storedPassword === "") {
+        alert("Please sign up first");
+        return;
+    }
+
+    if (u === storedUsername && p === storedPassword) {
+        const modal = new bootstrap.Modal(document.getElementById('successModal'));
+        modal.show();
+
+        setTimeout(() => {
+            window.location.href = 'dashboard.html';
+        }, 2000);
+    } else {
+        alert("Invalid username or password");
+    }
+});
 </script>
 
 </body>

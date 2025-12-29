@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Farmer List - Admin</title>
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 /* Body */
 body {
@@ -12,7 +15,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #111827;
     margin: 0;
-    padding-bottom: 80px; /* space for bottom button */
 }
 
 /* 🧊 Glass Navbar */
@@ -32,9 +34,8 @@ body {
 .navbar-brand {
     color: #800e71;
     font-weight: bold;
-    font-size: 1.8rem; /* Increased from 1.5rem */
+    font-size: 1.8rem;
 }
-
 
 /* Container */
 .container {
@@ -44,11 +45,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 /* Table */
@@ -66,14 +62,14 @@ th {
     background-color: #E5E7EB;
 }
 
-/* Password input */
+/* Password box */
 .password-box {
     text-align: center;
     margin-bottom: 20px;
 }
 input[type="password"] {
     padding: 10px;
-    width: 200px;
+    width: 220px;
     border-radius: 5px;
     border: 1px solid #D1D5DB;
 }
@@ -84,7 +80,6 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-left: 10px;
 }
 button:hover {
     background-color: #1E40AF;
@@ -109,17 +104,10 @@ button:hover {
     border-radius: 12px;
     font-weight: bold;
     text-decoration: none;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s, background 0.3s;
     z-index: 1000;
 }
-.back-btn:hover {
-    background: rgba(37, 99, 235, 0.85);
-    transform: translateY(-50%) scale(1.1);
-}
 
-/* Bottom Collection Button */
+/* Collection Button */
 .collection-btn {
     position: fixed;
     bottom: 20px;
@@ -131,27 +119,20 @@ button:hover {
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.2s, background 0.3s;
-    z-index: 1000;
-    display: none; /* hidden by default */
+    display: none;
 }
-.collection-btn:hover {
-    background: #1E40AF;
-    transform: scale(1.05);
-}
-/* Footer Styles */
+
+/* Footer */
 .site-footer {
-    background-color: #404040; /* dark grey */
+    background-color: #404040;
     color: #fff;
     padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: left;
+    margin-bottom: 80px; /* FIXED GAP */
 }
 
 .footer-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 20px;
     max-width: 1200px;
     margin: auto;
@@ -162,62 +143,47 @@ button:hover {
     min-width: 220px;
 }
 
-.site-footer h4 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #F3F4F6;
-}
-
-.site-footer p,
-.site-footer li,
-.site-footer a {
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.site-footer a {
-    color: #D1D5DB;
-    text-decoration: none;
-}
-
-.site-footer a:hover {
-    color: #FFFFFF;
-    text-decoration: underline;
-}
-
 .footer-section ul {
     list-style: none;
     padding: 0;
 }
 
+.footer-section a {
+    color: #D1D5DB;
+    text-decoration: none;
+}
+.footer-section a:hover {
+    color: #fff;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+.social-icons a {
+    color: #D1D5DB;
+    font-size: 1.4rem;
+    transition: 0.3s;
+}
+.social-icons a:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
 .footer-bottom {
     text-align: center;
     margin-top: 30px;
-    border-top: 1px solid #374151;
+    border-top: 1px solid #555;
     padding-top: 15px;
-    font-size: 0.9rem;
-    color: #E5E7EB;
 }
 
 /* Responsive */
 @media(max-width:768px){
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar .nav-links {
-        flex-direction: column;
-        width: 100%;
-    }
-    .navbar .nav-links a {
-        padding: 10px 0;
-    }
     input[type="password"], button {
         width: 100%;
-        margin: 5px 0;
-    }
-    table, th, td {
-        font-size: 14px;
+        margin-top: 5px;
     }
 }
 </style>
@@ -225,112 +191,90 @@ button:hover {
 
 <body>
 
-<!-- Back Button -->
 <a href="dashboard.html" class="back-btn">⬅ Back</a>
 
-<!-- 🧊 Glass Navbar -->
 <nav class="navbar">
     <div class="navbar-brand">Green Valley Dairy</div>
 </nav>
 
-
-
-<!-- Container -->
 <div class="container">
-    <h2>Farmer List (Farmer Only)</h2>
+<h2 style="text-align:center;">Farmer List (Admin Only)</h2>
 
-    <!-- Password input -->
-    <div class="password-box">
-        <input type="password" id="adminPass" placeholder="Enter Admin Password">
-        <button onclick="checkAdminPassword()">Access</button>
-        <div class="error" id="errorMsg"></div>
-    </div>
-
-    <!-- Farmer Table -->
-    <div id="farmerTable" class="hidden">
-        <table>
-            <tr>
-                <th>Farmer ID</th>
-                <th>Name</th>
-                <th>Join Date</th>
-                <th>Mobile</th>
-                <th>Village</th>
-            </tr>
-            <tr><td>F001</td><td>Divyesh Patil</td><td>01-01-2020</td><td>9876543210</td><td>Devpimpri</td></tr>
-            <tr><td>F002</td><td>Jayant Patil</td><td>15-02-2020</td><td>9876543211</td><td>Neri Digar</td></tr>
-            <tr><td>F003</td><td>Harshal Patil</td><td>10-03-2020</td><td>9876543212</td><td>Karmad</td></tr>
-            <tr><td>F004</td><td>Nitin Karnkal</td><td>20-03-2020</td><td>9876543213</td><td>Pahuri BK</td></tr>
-            <tr><td>F005</td><td>Ram Gavale</td><td>05-04-2020</td><td>9876543214</td><td>Pahuri BK</td></tr>
-            <tr><td>F006</td><td>Nilesh Patil</td><td>01-01-2020</td><td>9876543215</td><td>Palaskheda</td></tr>
-            <tr><td>F007</td><td>Gajanan Narwade</td><td>15-02-2020</td><td>9876543216</td><td>Neri Digar</td></tr>
-            <tr><td>F008</td><td>Rajendra Patil</td><td>10-03-2020</td><td>9876543217</td><td>Karmad</td></tr>
-            <tr><td>F009</td><td>Tejas Patil</td><td>20-03-2020</td><td>9876543218</td><td>Sunasgav</td></tr>
-            <tr><td>F010</td><td>Rushikesh Deshmukh</td><td>05-04-2020</td><td>9876543219</td><td>Rothwad</td></tr>
-        </table>
-    </div>
+<div class="password-box">
+    <input type="password" id="adminPass" placeholder="Enter Admin Password">
+    <button onclick="checkAdminPassword()">Access</button>
+    <div class="error" id="errorMsg"></div>
 </div>
 
+<div id="farmerTable" class="hidden">
+<table>
+<tr>
+<th>ID</th><th>Name</th><th>Join Date</th><th>Mobile</th><th>Village</th>
+</tr>
+<tr><td>F001</td><td>Divyesh Patil</td><td>01-01-2020</td><td>9876543210</td><td>Devpimpri</td></tr>
+<tr><td>F002</td><td>Jayant Patil</td><td>15-02-2020</td><td>9876543211</td><td>Neri Digar</td></tr>
+<tr><td>F003</td><td>Harshal Patil</td><td>10-03-2020</td><td>9876543212</td><td>Karmad</td></tr>
+<tr><td>F004</td><td>Nitin Karnkal</td><td>20-03-2020</td><td>9876543213</td><td>Pahuri BK</td></tr>
+<tr><td>F005</td><td>Ram Gavale</td><td>05-04-2020</td><td>9876543214</td><td>Pahuri BK</td></tr>
+</table>
+</div>
 
+</div>
 
-<!-- Bottom Collection Detail Button -->
 <a href="only_farmer_data.html" class="collection-btn" id="collectionBtn">Collection Detail</a>
 
-<!-- 🦵 FOOTER -->
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- About & Description -->
-    <div class="footer-section about">
+    <div class="footer-section">
       <h4>About Green Valley Dairy</h4>
-      <p>
-        Green Valley Dairy provides high‑quality fresh dairy products sourced
-        directly from local farms. We’re committed to nutrition, sustainability,
-        and community support.
-      </p>
+      <p>High-quality dairy products from local farms.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
     </div>
 
-    <!-- Quick Links -->
-    <div class="footer-section links">
+    <div class="footer-section">
       <h4>Quick Links</h4>
       <ul>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="farmers.html">Farmers</a></li>
-        <li><a href="delivery.html">Home Delivery</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="delivery.html">Delivery</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
 
-     <!-- Contact Info -->
-    <div class="footer-section contact-info">
-      <h4>Contact Information</h4>
-      <p>📍 14 Green Valley, Near Toll Naka, Neri, Jamner,Jalgaon, MH, India</p>
-      <p>📞 +91‑9876543210</p>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>📍 Jalgaon, MH, India</p>
+      <p>📞 +91-9876543210</p>
       <p>✉️ info@greenvalleydairy.com</p>
-      <p>@Jayant Patil</p>
+      <p> @JayantPatil</p>
     </div>
 
   </div>
 
-  <!-- Bottom line -->
   <div class="footer-bottom">
-    <p>© 2026 Green Valley Dairy. All Rights Reserved.</p>
+    © 2026 Green Valley Dairy. All Rights Reserved.
   </div>
 </footer>
 
 <script>
 function checkAdminPassword() {
-    const enteredPass = document.getElementById('adminPass').value;
-    const correctPass = "3280";
-
-    if (enteredPass === correctPass) {
+    const pass = document.getElementById('adminPass').value;
+    if (pass === "3280") {
         document.getElementById('farmerTable').classList.remove('hidden');
+        document.getElementById('collectionBtn').style.display = "block";
         document.getElementById('errorMsg').innerText = "";
-        document.getElementById('collectionBtn').style.display = 'block'; // show button
     } else {
-        document.getElementById('errorMsg').innerText = "❌ Incorrect admin password";
+        document.getElementById('errorMsg').innerText = "❌ Incorrect password";
         document.getElementById('farmerTable').classList.add('hidden');
-        document.getElementById('collectionBtn').style.display = 'none'; // hide button
+        document.getElementById('collectionBtn').style.display = "none";
     }
 }
 </script>
